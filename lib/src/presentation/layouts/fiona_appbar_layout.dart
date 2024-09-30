@@ -9,12 +9,12 @@ class FionaAppBarLayout extends StatelessWidget{
   bool settingsButton;
   Widget? customIconBack;
   bool defaultPassIcon;
-  Function(BuildContext context)? onClose;
+  Future<bool>  Function(BuildContext context)? onClose;
 
   FionaAppBarLayout(this.page, {this.backButton=false, this.settingsButton=true, this.customIconBack, this.defaultPassIcon=false, this.onClose});
 
   FionaAppBarLayout.likePopup(this.page, {this.backButton=true, this.settingsButton=false,this.customIconBack, this.defaultPassIcon=false, this.onClose });
-
+  
   @override
   Widget build(BuildContext context) {
     return buildLayout(context);
@@ -24,11 +24,12 @@ class FionaAppBarLayout extends StatelessWidget{
   Widget buildLayout(BuildContext context) {
 
     String pageTitle = this.page.getTitle();
+    List<Widget> saffoldWidgets = buildScaffoldWidgets(context);
 
     Scaffold scaffold = buildScaffold(
         context,
         appBar: buildAppBar(context, pageTitle),
-        widgets: buildScaffoldWidgets(context),
+        widgets: saffoldWidgets,
         );
 
     Theme theme = buildTheme(scaffold);
