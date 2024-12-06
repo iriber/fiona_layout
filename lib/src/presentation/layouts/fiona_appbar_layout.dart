@@ -22,7 +22,7 @@ class FionaAppBarLayout extends StatelessWidget{
 
   @override
   Widget buildLayout(BuildContext context) {
-
+    /*
     String pageTitle = this.page.getTitle();
     List<Widget> saffoldWidgets = buildScaffoldWidgets(context);
 
@@ -34,7 +34,27 @@ class FionaAppBarLayout extends StatelessWidget{
 
     Theme theme = buildTheme(scaffold);
 
-    return theme;
+    return theme;*/
+    return FutureBuilder<String>(
+      future: this.page.getTitle(),
+      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+        String pageTitle="";
+        if (snapshot.hasData && (snapshot.data?.isNotEmpty??false)) {
+          pageTitle = snapshot.data??"";
+        }
+        List<Widget> saffoldWidgets = buildScaffoldWidgets(context);
+
+        Scaffold scaffold = buildScaffold(
+          context,
+          appBar: buildAppBar(context, pageTitle),
+          widgets: saffoldWidgets,
+        );
+
+        Theme theme = buildTheme(scaffold);
+        return theme;
+      },
+
+    );
   }
 
   @override
