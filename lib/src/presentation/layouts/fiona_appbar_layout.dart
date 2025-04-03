@@ -46,7 +46,7 @@ class FionaAppBarLayout extends StatelessWidget{
 
         Scaffold scaffold = buildScaffold(
           context,
-          appBar: buildAppBar(context, pageTitle, titleWidget: page.getTitleWidget()),
+          appBar: buildAppBar(context, pageTitle),
           widgets: saffoldWidgets,
         );
 
