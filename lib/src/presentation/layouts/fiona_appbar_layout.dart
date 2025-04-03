@@ -46,7 +46,7 @@ class FionaAppBarLayout extends StatelessWidget{
 
         Scaffold scaffold = buildScaffold(
           context,
-          appBar: buildAppBar(context, pageTitle),
+          appBar: buildAppBar(context, pageTitle, titleWidget: page.getTitleWidget()),
           widgets: saffoldWidgets,
         );
 
@@ -100,7 +100,7 @@ class FionaAppBarLayout extends StatelessWidget{
     return null;
   }
 
-  AppBar? buildAppBar(BuildContext context, String pageTitle){
+  AppBar? buildAppBar(BuildContext context, String pageTitle, {Widget? titleWidget}){
     return null;
   }
 
